@@ -77,7 +77,7 @@ window.ST = window.ST || {};
       logoPos: 'right',
       h: { tasks: 'Du freust dich auf', profile: 'Wir freuen uns auf dich und', offer: '… und lassen für dich die Sonne strahlen', contact: 'Deine Ansprechperson' },
       order: ['facts', 'intro', 'tasks', 'profile', 'offer', 'benefits', 'contact'],
-      footer: 'SONNENTOR Kräuterhandelsgesellschaft mbH · Sprögnitz 10 · 3910 Zwettl · sonnentor.com/karriere' },
+      footer: 'SONNENTOR Kräuterhandelsgesellschaft mbH · Sprögnitz 10 · 3913 Zwettl · sonnentor.com/karriere' },
     { id: 'tpl-clean', name: 'Klar & modern', isDefault: false,
       style: 'clean', primary: '#1e4d8c', accent: '#ffd000', text: '#1f2937', paper: '#ffffff',
       fontHeading: 'Nunito', fontBody: 'Source Sans 3', density: 'compact',
@@ -250,7 +250,7 @@ window.ST = window.ST || {};
 
   function seed() {
     return {
-      version: 2,
+      version: 3,
       roles: JSON.parse(JSON.stringify(DEFAULT_ROLES)),
       users: USERS, jobs: JOBS, apps: APPS, templates: DEFAULT_TEMPLATES, benefits: BENEFITS, settings: SETTINGS,
       audit: [
@@ -265,7 +265,11 @@ window.ST = window.ST || {};
   ST.db = null;
   ST.load = function () {
     try { ST.db = JSON.parse(localStorage.getItem(KEY)); } catch (e) { ST.db = null; }
-    if (!ST.db || ST.db.version !== 2) { ST.db = seed(); ST.save(); }
+    if (ST.db && ST.db.version === 2) { /* neue PLZ 3913 in gespeicherte Vorlagen übernehmen, Testdaten bleiben erhalten */
+      ST.db.templates.forEach(t => { t.footer = (t.footer || '').replace('3910 Zwettl', '3913 Zwettl'); });
+      ST.db.version = 3; ST.save();
+    }
+    if (!ST.db || ST.db.version !== 3) { ST.db = seed(); ST.save(); }
   };
   ST.save = function () { try { localStorage.setItem(KEY, JSON.stringify(ST.db)); } catch (e) { console.warn(e); } };
   ST.reset = function () { localStorage.removeItem(KEY); ST.load(); };

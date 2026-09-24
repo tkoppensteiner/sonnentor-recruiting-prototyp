@@ -15,7 +15,7 @@
       <main>${inner}</main>
       <footer class="pub-f"><div class="wrap">
         <div>${ST.logo(34)}</div>
-        <p>${e(ST.db.settings.company)} · Sprögnitz 10 · 3910 Zwettl<br>
+        <p>${e(ST.db.settings.company)} · Sprögnitz 10 · 3913 Zwettl<br>
         <a href="${e(ST.db.settings.privacyUrl)}" target="_blank" rel="noopener">Datenschutz</a> · <a href="https://www.sonnentor.com" target="_blank" rel="noopener">sonnentor.com</a></p>
       </div></footer></div>`;
   }

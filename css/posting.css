@@ -1,0 +1,93 @@
+/* Ausschreibung (A4) – wird in Vorschau, Template-Designer und PDF-Export verwendet */
+.posting {
+  --kraft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .12 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  width: 210mm; min-height: 297mm; box-sizing: border-box; position: relative; overflow: hidden;
+  background: var(--paper); color: var(--t); font-family: var(--fb), system-ui, sans-serif;
+  font-size: 10pt; line-height: 1.45; display: flex; flex-direction: column;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.posting *, .posting *::before, .posting *::after { box-sizing: border-box; }
+.posting .ic { vertical-align: -2px; }
+.posting h1, .posting h3, .posting h4 { font-family: var(--fh), var(--fb), sans-serif; margin: 0; }
+
+.p-head { position: relative; }
+.p-logo { position: absolute; top: 10mm; z-index: 3; }
+.logo-right .p-logo { right: 12mm; transform: rotate(3deg); }
+.logo-left .p-logo { left: 12mm; }
+.p-logo svg { display: block; filter: drop-shadow(0 2px 3px rgba(0,0,0,.2)); }
+
+.p-body { padding: 6mm 16mm 4mm; flex: 1; }
+.p-body section { margin: 0 0 5mm; break-inside: avoid; }
+.p-body h3 { font-size: 13pt; color: var(--p); margin-bottom: 2mm; font-weight: 800; }
+.p-body ul { margin: 0; padding-left: 5mm; }
+.p-body li { margin: 0 0 1.2mm; padding-left: 1mm; }
+.p-body li::marker { color: var(--p); }
+.p-intro { font-size: 10.5pt; margin: 0 0 6mm; }
+.p-salary { font-size: 9pt; margin: 2.5mm 0 0; opacity: .9; }
+
+.p-facts { display: flex; flex-wrap: wrap; gap: 2mm 3mm; margin: 0 0 5mm; }
+.p-facts span { display: inline-flex; align-items: center; gap: 1.5mm; padding: 1.2mm 3mm; border-radius: 99px; background: color-mix(in srgb, var(--p) 10%, transparent); color: var(--p); font-weight: 700; font-size: 9pt; }
+
+.p-benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(19mm, 1fr)); gap: 3mm 2mm; margin: 2mm 0 5mm; break-inside: avoid; }
+.p-ben { text-align: center; font-size: 7pt; hyphens: manual; font-weight: 700; line-height: 1.2; }
+.p-ben span { display: grid; place-items: center; width: 11mm; height: 11mm; margin: 0 auto 1.5mm; border-radius: 50%; background: var(--a); color: var(--p); }
+.p-benlist p { margin: 0; }
+
+.p-contact { display: flex; justify-content: space-between; align-items: flex-end; gap: 6mm; padding: 4mm 5mm; border-radius: 3mm; background: color-mix(in srgb, var(--p) 7%, transparent); break-inside: avoid; margin-bottom: 4mm; }
+.p-contact h4 { font-size: 10pt; color: var(--p); margin-bottom: 1mm; }
+.p-contact p { margin: 0; font-size: 9pt; }
+.p-contact .p-cname { font-size: 12pt; }
+.p-qr { text-align: center; color: var(--p); font-weight: 800; font-size: 8pt; }
+.p-qr svg { display: block; background: #fff; padding: 2mm; width: 26mm; height: 26mm; border-radius: 2mm; }
+.p-qr span { display: block; margin-top: 1mm; }
+.qr-fallback { display: grid; place-items: center; border: 1px dashed currentColor; }
+
+.p-foot { padding: 3mm 16mm; font-size: 7.5pt; color: #fff; background: var(--p); text-align: center; }
+
+.dens-compact { font-size: 9.2pt; line-height: 1.38; }
+.dens-compact .p-body { padding-top: 4mm; }
+.dens-compact .p-body section { margin-bottom: 3.5mm; }
+.dens-compact .p-body li { margin-bottom: .6mm; }
+.dens-compact .p-body h3 { font-size: 12pt; margin-bottom: 1.5mm; }
+.dens-compact .p-intro { font-size: 9.8pt; margin-bottom: 4mm; }
+.dens-compact .p-facts { margin-bottom: 4mm; }
+.dens-compact .p-contact { padding: 3mm 5mm; }
+.dens-compact .p-qr svg { width: 22mm; height: 22mm; }
+
+/* ---------- Stil: Kraftpapier (angelehnt an bestehende Ausschreibungen) ---------- */
+.st-kraft .p-head { background: #c9a36d var(--kraft); padding: 9mm 16mm 8mm; }
+.st-kraft .p-img { width: 84mm; height: 52mm; margin: 2mm auto 0; background-size: cover; background-position: center; border: 3mm solid #fff; box-shadow: 0 2mm 5mm rgba(0,0,0,.3); transform: rotate(-2deg); }
+.st-kraft .p-title { display: flex; justify-content: center; margin-top: -6mm; position: relative; z-index: 2; }
+.st-kraft .p-title span { background: var(--p); color: #fff; padding: 3mm 7mm; font-size: 17pt; line-height: 1.2; font-weight: 900; text-align: center; max-width: 150mm; transform: rotate(-1.2deg);
+  clip-path: polygon(1% 4%, 99% 0, 100% 50%, 98.5% 97%, 2% 100%, 0 55%); box-shadow: 0 1mm 2mm rgba(0,0,0,.25); }
+.st-kraft:not(:has(.p-img)) .p-title { margin-top: 26mm; }
+
+/* ---------- Stil: Klar & modern ---------- */
+.st-clean .p-head { padding: 12mm 16mm 0; }
+.st-clean .p-img { height: 62mm; border-radius: 3mm; background-size: cover; background-position: center; margin-top: 18mm; }
+.st-clean .p-title { margin-top: 6mm; font-size: 20pt; font-weight: 900; color: var(--p); line-height: 1.15; border-left: 2mm solid var(--a); padding-left: 4mm; }
+.st-clean:not(:has(.p-img)) .p-title { margin-top: 22mm; }
+.st-clean .p-body h3 { text-transform: uppercase; letter-spacing: .06em; font-size: 10pt; }
+.st-clean .p-foot { background: transparent; color: var(--p); border-top: .4mm solid color-mix(in srgb, var(--p) 25%, transparent); }
+
+/* ---------- Stil: Sonnenschein ---------- */
+.st-sun .p-head { background: var(--a); padding: 14mm 16mm 12mm; min-height: 70mm; overflow: hidden; }
+.st-sun .p-sunrays { position: absolute; left: -40mm; bottom: -90mm; width: 160mm; height: 160mm; border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, rgba(255,255,255,.35) 0 6deg, transparent 6deg 15deg); }
+.st-sun .p-img { position: relative; width: 70mm; height: 48mm; background-size: cover; background-position: center; border-radius: 3mm; margin-top: 8mm; border: 2mm solid #fff; }
+.st-sun .p-title { position: relative; margin-top: 22mm; font-size: 30pt; line-height: 1.05; color: var(--p); max-width: 140mm; font-weight: 700; }
+.st-sun.logo-left .p-title { margin-top: 28mm; }
+.st-sun .p-logo svg { filter: none; }
+.st-sun .p-logo rect { fill: #fff; }
+.st-sun .p-logo circle { fill: #fff; }
+
+body.print { margin: 0; background: #fff; }
+@page { size: A4; margin: 0; }
+@media print {
+  body.print { margin: 0; }
+  .posting { width: 210mm; min-height: 297mm; }
+}
+.st-kraft.dens-compact .p-head { padding-top: 7mm; padding-bottom: 6mm; }
+.st-kraft.dens-compact .p-img { height: 46mm; width: 76mm; }
+.dens-compact .p-contact { margin-bottom: 2mm; }
+.dens-compact .p-body { padding-bottom: 2mm; }
